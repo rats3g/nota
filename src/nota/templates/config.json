@@ -5,13 +5,13 @@
         "directories": [
             "logs"
         ],
-        "filename": "defect_$id"
+        "filename": "defect_$id.md"
     },
     "bug": {
         "template": "~/.config/nota/defect.md",
         "directories": [
             "logs"
         ],
-        "filename": "defect_$id"
+        "filename": "defect_$id.md"
     }
 }
