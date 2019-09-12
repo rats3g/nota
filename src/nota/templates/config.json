@@ -1,0 +1,17 @@
+{
+    "root": "~/nota",
+    "defect": {
+        "template": "~/.config/nota/defect.md",
+        "directories": [
+            "logs"
+        ],
+        "filename": "defect_$id"
+    },
+    "bug": {
+        "template": "~/.config/nota/defect.md",
+        "directories": [
+            "logs"
+        ],
+        "filename": "defect_$id"
+    }
+}
