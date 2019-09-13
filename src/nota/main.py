@@ -1,7 +1,6 @@
 from nota import __version__
 import argparse
 import collections
-import itertools
 import json
 import os
 import sys
@@ -137,6 +136,19 @@ def config_check(config):
                     copyfile(path.join(template_directory, file),
                              path.join(_homeDirectory, file))
 
+            data = {
+                "defect": {
+                    "template": f"{_homeDirectory}/defect.md",
+                    "directories": [
+                        "logs"
+                    ],
+                    "filename": "defect_$id.md"
+                }
+            }
+
+            with open(config, "w+") as config_file:
+                json.dump(data, config_file, indent=4)
+
     else:
         # Config parameter set
         if (not path.exists(config)):
@@ -194,11 +206,10 @@ def filename_check(config, option, filename):
 
 def root_check(config, root):
     if (root is not None):
-        if (not path.exists(root)):
-            print(f"Root directory not found: {root}")
-            exit(-1)
-
         return root
+
+    if ("root" in config):
+        return config["root"]
 
     return os.getcwd()
 
@@ -255,6 +266,18 @@ def main(args):
 
         if (not path.exists(template)):
             print(f"Template file not found: {template}")
+            exit(-1)
+
+        if (not path.isfile(template)):
+            print(f"Template must be a file: {template}")
+            exit(-1)
+
+        if (not path.exists(root)):
+            print(f"Root directory not found: {root}")
+            exit(-1)
+
+        if (not path.isdir(root)):
+            print(f"Root must be a directory: {root}")
             exit(-1)
 
         os.makedirs(path.join(root, option, identifier), exist_ok=True)
