@@ -7,7 +7,7 @@ nota is a scaffolding tool for developer notes. Out of the box, nota provides se
 Install nota with:
 
 ```shell
-pip install nota
+pip install rats3g-nota
 ```
 
 Run nota and list possible arguments using:
